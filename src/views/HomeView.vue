@@ -1,5 +1,30 @@
 <script setup>
+import { ref } from 'vue';
+import { getCurrency } from '@/api/api';
 import GetRatesButton from '@/components/GetRatesButton.vue';
+import CurrencyRates from '@/components/CurrencyRates.vue';
+
+const rates = ref(null);
+const previousRates = ref(null);
+const history = ref([]);
+const loading = ref(false);
+const error = ref('');
+
+const fetchCurrency = async () => {
+  try {
+    loading.value = true;
+    error.value = '';
+
+    const res = await getCurrency();
+    rates.value = res.data.rates;
+    previousRates.value = res.data.previous.rates;
+
+  } catch (e) {
+    error.value = 'Не удалось получить курсы. Попробуйте позже';
+  } finally {
+    loading.value = false;
+  }
+};
 
 </script>
 
@@ -10,6 +35,12 @@ import GetRatesButton from '@/components/GetRatesButton.vue';
     <GetRatesButton
       :loading="loading"
       @click="fetchCurrency"
+    />
+
+    <CurrencyRates
+      v-if="rates"
+      :rates="rates"
+      :previousRates="previousRates"
     />
   </div>
 </template>
