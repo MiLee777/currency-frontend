@@ -47,6 +47,8 @@ onMounted(() => {
       @click="fetchCurrency"
     />
 
+    <p v-if="error" class="error">{{ error }}</p>
+
     <CurrencyRates
       v-if="rates"
       :rates="rates"
@@ -62,5 +64,9 @@ onMounted(() => {
   max-width: 600px;
   margin: 40px auto;
   font-family: Arial, sans-serif;
+}
+
+.error {
+  color: red;
 }
 </style>

@@ -1,44 +1,49 @@
-# currency-frontend
+# Currency Backend
+Frontend-приложение для отображения курсов валют, получаемых с собственного backend-сервиса.
 
-This template should help get you started developing with Vue 3 in Vite.
+##  Стек технологий
+- Vue 3 (Composition API)
+- Vue Router
+- Axios
+- Axios (для запросов к ЦБ РФ)
+- JavaScript
+- CSS
 
-## Recommended IDE Setup
+##  Функционал
 
-[VS Code](https://code.visualstudio.com/) + [Vue (Official)](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+1. Получение текущих курсов валют:
+   - USD, EUR, CNY (в RUB)
+2. Цветовая индикация изменения курса:
+   - 🟢 зелёный — курс вырос по сравнению с предыдущим днём
+   - 🔴 красный — курс снизился
+   - ⚪ серый — нет данных для сравнения
+3. Отображение истории последних 10 запросов:
+   - дата и время запроса
+   - IP
+   - курсы валют
+4. Автоматическое обновление истории:
+   - при загрузке страницы
+   - после получения новых курсов
+5. Все запросы выполняются **только к backend API**  
+   (прямые запросы к cbr.ru с фронта отсутствуют)
 
-## Recommended Browser Setup
 
-- Chromium-based browsers (Chrome, Edge, Brave, etc.):
-  - [Vue.js devtools](https://chromewebstore.google.com/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd) 
-  - [Turn on Custom Object Formatter in Chrome DevTools](http://bit.ly/object-formatters)
-- Firefox:
-  - [Vue.js devtools](https://addons.mozilla.org/en-US/firefox/addon/vue-js-devtools/)
-  - [Turn on Custom Object Formatter in Firefox DevTools](https://fxdx.dev/firefox-devtools-custom-object-formatters/)
+## Установка и запуск
+1. Клонируем репозиторий:
 
-## Customize configuration
+`git clone https://github.com/MiLee777/currency-frontend.git`
 
-See [Vite Configuration Reference](https://vite.dev/config/).
+`cd currency-frontend`
 
-## Project Setup
 
-```sh
-npm install
-```
+2. Устанавливаем зависимости:
 
-### Compile and Hot-Reload for Development
+`npm install`
 
-```sh
-npm run dev
-```
 
-### Compile and Minify for Production
+3. Запустить приложение:
 
-```sh
-npm run build
-```
+`npm run dev`
 
-### Lint with [ESLint](https://eslint.org/)
 
-```sh
-npm run lint
-```
+Сервер будет доступен по адресу: http://localhost:5173
