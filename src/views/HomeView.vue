@@ -22,7 +22,7 @@ const fetchCurrency = async () => {
     error.value = '';
 
     const res = await getCurrency();
-    rates.value = res.data.rates;
+    rates.value = res.data.today.rates;
     previousRates.value = res.data.previous.rates;
 
     await loadHistory();
